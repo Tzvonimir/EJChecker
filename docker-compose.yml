@@ -1,0 +1,22 @@
+version: '2'
+services:
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=admin
+  web:
+    build: .
+    command: /bin/bash /docker_init.sh
+    volumes:
+      - ./:/core
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+      - "1234:1234"
+    depends_on:
+      - db
+    links:
+      - db
