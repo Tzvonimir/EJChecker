@@ -44,7 +44,7 @@ Change directory to src/admin-vue/ and run:
     
 Access development on:
 
-   localhost:1234
+      localhost:1234
 
 ## Using Docker to simplify development (optional)
 
