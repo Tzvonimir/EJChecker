@@ -51,7 +51,8 @@ Access development on:
 You can use Docker to improve your development experience. 
 A number of docker-compose configuration are available in the Dockerfile to launch required third party services. 
 For example, to start application in a docker container, run:
-  sudo docker-compose up -d
+  
+      sudo docker-compose up -d
   
   
 [npm]: https://www.npmjs.com/
