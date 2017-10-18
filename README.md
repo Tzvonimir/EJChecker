@@ -35,12 +35,16 @@ After composer install run:
 ### Runing development server
 
 Change directory to src/admin-api/ and run:
+    
     php artisan serve
     
 Change directory to src/admin-vue/ and run:
+    
     quasar dev
     
-Access development on localhost:1234
+Access development on:
+
+   localhost:1234
 
 ## Using Docker to simplify development (optional)
 
