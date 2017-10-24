@@ -26,6 +26,7 @@
         </div>
       </div>
     </div>
+
     <q-modal ref="combinationDetails">
       <div class="layout-view justify-center">
         <div class="contain" style="margin-right: 30px;">
@@ -72,7 +73,7 @@
           <div class="justify-center row" style="margin-top: 15px;">
             {{ $t("similar_combinations") }}
           </div>
-          <div class="justify-center row" v-for="combination in combinationCount.existing_combinations">
+          <div class="justify-center row" v-for="combination in combinationCount.existing_combinations" @click="saveExistingCombination(combination)">
             <ul class="numbers detail-numbers-circle" id="all-numbers">
               <li>
                 <span>{{ combination.first_number.number }}</span>
@@ -195,6 +196,8 @@ export default {
       })
     },
     saveCombination () {
+      this.sortNumbers()
+      this.sortExtraNumbers()
       this.combination = {
         first_number: this.dataNumbers[0],
         second_number: this.dataNumbers[1],
@@ -320,6 +323,25 @@ export default {
         ResponseHelper.errorResolver(error)
         Loading.hide()
       })
+    },
+    saveExistingCombination (combination) {
+      this.$refs.combinationDetails.close()
+      Loading.show()
+      this.dataNumbers[0] = combination.first_number.number
+      this.dataNumbers[1] = combination.second_number.number
+      this.dataNumbers[2] = combination.third_number.number
+      this.dataNumbers[3] = combination.fourth_number.number
+      this.dataNumbers[4] = combination.fifth_number.number
+      this.dataExtraNumbers[0] = combination.first_number.number
+      this.dataExtraNumbers[1] = combination.second_number.number
+      Loading.hide()
+      this.saveCombination()
+    },
+    sortNumbers () {
+      this.dataNumbers.sort((a, b) => a > b)
+    },
+    sortExtraNumbers () {
+      this.dataExtraNumbers.sort((a, b) => a > b)
     }
   },
   mounted () {

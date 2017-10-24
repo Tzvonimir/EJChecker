@@ -178,12 +178,12 @@ class CombinationRepository extends DbRepository
                 ->whereDate('created_at', '>=', new Carbon('last friday', 'Europe/Zagreb'))
                 ->limit(5)
                 ->get();
-
+                
             return [
               'success' => true,
               'combination_count' => $combinationCount,
               'current_combination_count' => $currentCombinationCount,
-              'existing_combinations' =>$existingCombinations
+              'existing_combinations' => $existingCombinations
             ];
         } catch(\Illuminate\Database\QueryException $ex)
         {
